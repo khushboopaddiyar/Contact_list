@@ -10,11 +10,6 @@ import Grid from "@material-ui/core/Grid";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
 import { Tab, Tabs } from "@material-ui/core";
 
 import Contact from "./contact";
@@ -34,7 +29,6 @@ const App = () => {
   let [responseData, setResponseData] = React.useState("");
   let [responseParticularData, setResponseParticularData] = React.useState("");
   let [favouriteList, setFavouriteList] = React.useState([]);
-
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
@@ -59,7 +53,6 @@ const App = () => {
           a.first_name.localeCompare(b.first_name)
         );
 
-        console.log("sorted", sorted);
         setResponseData(sorted);
       })
       .catch((error) => {
@@ -68,17 +61,14 @@ const App = () => {
   }, []);
 
   const fetchParticularData = (id) => {
-    console.log(id);
     setOpen(true);
     ParticularData(id);
   };
 
   const handleFavourite = (obj) => {
-    console.log("fav", favouriteList);
     const index = favouriteList.findIndex(
       (_cId) => _cId.data.id === obj.data.id
     );
-    console.log(index);
     if (index === -1) {
       setFavouriteList([obj, ...favouriteList]);
     }
@@ -110,7 +100,6 @@ const App = () => {
     fetchData();
   }, [fetchData]);
 
-  console.log("res", favouriteList);
   return (
     <Grid maxWidth="md" style={{ margin: "10px" }}>
       <Tabs

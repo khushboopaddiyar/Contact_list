@@ -37,7 +37,6 @@ const Contact = (props) => {
   const handleClose = () => {
     onClose();
   };
-  console.log(responseParticularData);
   return (
     <Dialog
       onClose={handleClose}
